@@ -14,7 +14,7 @@ const DropdownMenu = () => {
       {/* Dropdown toggle button */}
       <button
         onClick={toggleDropdown}
-        className="z-10block relative rounded-md border border-transparent bg-white p-0 text-gray-700 focus:border-blue-500 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40 dark:bg-[#2051E5] dark:text-white dark:focus:ring-blue-400 dark:focus:ring-opacity-40"
+        className="z-10block reBurgerComponent:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40 dark:bg-[#2051E5] dark:text-white dark:focus:ring-blue-400 dark:focus:ring-opacity-40"
       >
         <Icon color="white" size={20}>
           <MdMenu />

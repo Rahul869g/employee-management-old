@@ -1,6 +1,7 @@
 import FirstPage from "./pages/firstPage";
 import SecondPage from "./pages/secondPage";
 import Footer from "./components/Footer";
+import MyForm from "./components/MyForm";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 const appRouter = createBrowserRouter([
@@ -11,14 +12,14 @@ const appRouter = createBrowserRouter([
   {
     path: "/projects",
     element: <SecondPage />
-  }
+  },
+  { path: "/form", element: <MyForm /> }
 ]);
 
 const App = () => {
   return (
     <div>
       <RouterProvider router={appRouter}></RouterProvider>
-      <Footer />
       <Footer />
     </div>
   );

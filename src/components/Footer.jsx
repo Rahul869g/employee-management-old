@@ -1,10 +1,9 @@
+import { Link } from "react-router-dom";
 import Home from "../assets/img/Home.svg";
 import calender from "../assets/img/calender.svg";
 import message from "../assets/img/message.svg";
 import profile from "../assets/img/profile.svg";
 import team from "../assets/img/team.svg";
-
-import Modal from "./Modal";
 
 const Footer = () => {
   return (
@@ -40,13 +39,11 @@ const Footer = () => {
             Profile
           </p>
         </span>
-      </div>
-      <div className="container">
-        <div className="btnDiv">
-          <span id="dice-btn" className="mb-4 flex w-8 flex-col items-center">
-            <Modal />
-          </span>
-        </div>
+        {/* <div className="relative">
+          <Link to="/form">
+            <div className="add-button">+</div>
+          </Link>
+        </div> */}
       </div>
     </>
   );

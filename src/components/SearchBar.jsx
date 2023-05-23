@@ -1,35 +1,9 @@
 import "../index.css";
-import { useState, useRef } from "react";
 
-const SearchBar = () => {
-  const [isFocused, setIsFocused] = useState(false);
-  const [inputValue, setInputValue] = useState("");
-  const inputRef = useRef(null);
-  const buttonRef = useRef(null);
-
-  const handleFocus = () => {
-    setIsFocused(true);
-    inputRef.current.focus();
-  };
-
-  const handleBlur = () => {
-    if (!buttonRef.current.contains(document.activeElement)) {
-      setIsFocused(false);
-    }
-  };
-
-  const handleChange = (event) => {
-    setInputValue(event.target.value);
-  };
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    // Perform your search or submit logic here
-  };
-
+const InputComponent = () => {
   return (
     <div className="input-wrapper">
-      <button className="icon" onClick={handleFocus} ref={buttonRef}>
+      <button className="icon">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -53,23 +27,9 @@ const SearchBar = () => {
           ></path>
         </svg>
       </button>
-      <form onSubmit={handleSubmit}>
-        <input
-          ref={inputRef}
-          placeholder={isFocused ? "search.." : ""}
-          className={`input ${isFocused ? "focused" : ""}`}
-          name="text"
-          type="text"
-          value={inputValue}
-          onChange={handleChange}
-          onBlur={handleBlur}
-        />
-        <button type="submit" className="hidden">
-          Search
-        </button>
-      </form>
+      <input placeholder="search.." className="input" name="text" type="text" />
     </div>
   );
 };
 
-export default SearchBar;
+export default InputComponent;
