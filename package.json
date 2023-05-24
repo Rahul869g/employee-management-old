@@ -24,6 +24,7 @@
     "react-horizontal-datepicker": "^2.0.3",
     "react-icons": "^4.8.0",
     "react-router-dom": "^6.11.2",
+    "react-spring": "^9.7.1",
     "xlsx": "^0.18.5",
     "yup": "^1.1.1"
   },

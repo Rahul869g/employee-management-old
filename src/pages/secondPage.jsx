@@ -26,21 +26,19 @@ const secondPage = () => {
   const sum = percentage + percentage2 / 200;
   return (
     <>
-      <div
-        className="flex h-32
-    items-center justify-between rounded-b-2xl bg-[#2051E5] p-2 pb-0 "
-      >
-        <div> </div>
-        <div className="ml-3 pt-6  text-white">
-          <img className="absolute left-0 top-0" src={Vector} />
-          <p className=" font-sans text-2xl font-semibold ">Projects</p>
+      <div className="flex h-32 items-center justify-between rounded-b-2xl bg-[#2051E5] p-2 pb-0">
+        <div></div>
+        <img className="absolute left-0 top-0" src={Vector} />
+        <div className="fixed inset-x-0 flex items-center justify-center text-white">
+          <p className="font-sans text-2xl font-semibold">Projects</p>
         </div>
-        <div className="flex  pt-5">
+        <div className="flex pt-5">
           <span className="mr-3">
             <SearchBar />
           </span>
         </div>
       </div>
+
       {/* 1 */}
       <div className="m-4   flex h-48 gap-2 rounded-xl bg-[#EEF2FF] ">
         <div className=" flex items-center justify-center">

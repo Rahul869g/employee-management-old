@@ -2,6 +2,7 @@ import FirstPage from "./pages/firstPage";
 import SecondPage from "./pages/secondPage";
 import Footer from "./components/Footer";
 import MyForm from "./components/MyForm";
+import ProgressBar from "./components/ProgressBar";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 const appRouter = createBrowserRouter([

@@ -1,20 +1,41 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { MdMenu } from "@ricons/ionicons4";
 import { Icon } from "@ricons/utils";
 
 const DropdownMenu = () => {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
+  const [selectedItem, setSelectedItem] = useState(null);
+  const dropdownRef = useRef(null);
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
   };
 
+  const handleOutsideClick = (event) => {
+    if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+      setIsOpen(false);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("click", handleOutsideClick);
+
+    return () => {
+      document.removeEventListener("click", handleOutsideClick);
+    };
+  }, []);
+
+  const handleItemClick = (item) => {
+    setSelectedItem(item);
+    setIsOpen(false);
+  };
+
   return (
-    <div className="relative inline-block">
+    <div className="relative inline-block" ref={dropdownRef}>
       {/* Dropdown toggle button */}
       <button
         onClick={toggleDropdown}
-        className="z-10block reBurgerComponent:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40 dark:bg-[#2051E5] dark:text-white dark:focus:ring-blue-400 dark:focus:ring-opacity-40"
+        className="reBurgerComponent:outline-none z-10 block focus:ring focus:ring-blue-300 focus:ring-opacity-40 dark:bg-[#2051E5] dark:text-white dark:focus:ring-blue-400 dark:focus:ring-opacity-40"
       >
         <Icon color="white" size={20}>
           <MdMenu />
@@ -29,31 +50,56 @@ const DropdownMenu = () => {
         >
           <a
             href="#"
-            className="block transform px-4 py-3 text-sm capitalize text-gray-600 transition-colors duration-300 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-white"
+            className={`block transform px-4 py-3 text-sm capitalize text-gray-600 transition-colors duration-300 ${
+              selectedItem === "profile"
+                ? "bg-blue-100 dark:bg-gray-700 dark:text-white"
+                : "hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white"
+            }`}
+            onClick={() => handleItemClick("profile")}
           >
             Your Profile
           </a>
           <a
             href="#"
-            className="block transform px-4 py-3 text-sm capitalize text-gray-600 transition-colors duration-300 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-white"
+            className={`block transform px-4 py-3 text-sm capitalize text-gray-600 transition-colors duration-300 ${
+              selectedItem === "projects"
+                ? "bg-blue-100 dark:bg-gray-700 dark:text-white"
+                : "hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white"
+            }`}
+            onClick={() => handleItemClick("projects")}
           >
             Your Projects
           </a>
           <a
             href="#"
-            className="block transform px-4 py-3 text-sm capitalize text-gray-600 transition-colors duration-300 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-white"
+            className={`block transform px-4 py-3 text-sm capitalize text-gray-600 transition-colors duration-300 ${
+              selectedItem === "help"
+                ? "bg-blue-100 dark:bg-gray-700 dark:text-white"
+                : "hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white"
+            }`}
+            onClick={() => handleItemClick("help")}
           >
             Help
           </a>
           <a
             href="#"
-            className="block transform px-4 py-3 text-sm capitalize text-gray-600 transition-colors duration-300 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-white"
+            className={`block transform px-4 py-3 text-sm capitalize text-gray-600 transition-colors duration-300 ${
+              selectedItem === "settings"
+                ? "bg-blue-100 dark:bg-gray-700 dark:text-white"
+                : "hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white"
+            }`}
+            onClick={() => handleItemClick("settings")}
           >
             Settings
           </a>
           <a
             href="#"
-            className="block transform px-4 py-3 text-sm capitalize text-gray-600 transition-colors duration-300 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-white"
+            className={`block transform px-4 py-3 text-sm capitalize text-gray-600 transition-colors duration-300 ${
+              selectedItem === "signout"
+                ? "bg-blue-100 dark:bg-gray-700 dark:text-white"
+                : "hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white"
+            }`}
+            onClick={() => handleItemClick("signout")}
           >
             Sign Out
           </a>
